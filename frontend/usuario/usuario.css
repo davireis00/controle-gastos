@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #e3e9f7;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    height: 100vh;
+    border-radius: 0 18px 18px 0;
+    position: fixed;
+    transition: all .5s;
+    min-width: 82px;
+    z-index: 2;
+    padding: 20px;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.nav-list li {
+    margin-bottom: 15px;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #0a0a0a;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.nav-list a:hover {
+    background-color: #e3e9f7;
+}
+
+.profile-container {
+    margin-left: 0px; 
+    padding: 20px;
+    flex: 1;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #4f46e5; 
+    color: rgb(255, 255, 255); 
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+
+.profile-info {
+    margin-top: 20px;
+    background-color: #fff; 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-field {
+    margin-bottom: 15px;
+}
+
+.profile-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.profile-field input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+
+.profile-field input:disabled {
+    background-color: #e3e9f7;
+}
+
+.toggle-password {
+    cursor: pointer;
+    position: absolute;
+    margin-left: -30px;
+    margin-top: 5px;
+}
+
+.fixed-size-password {
+    width: 20ch; 
+    padding: 5px;
+    font-size: 16px; 
+}

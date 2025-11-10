@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Gastos</title>
+    <link rel="stylesheet" href="meusgastos.css">
+    <link rel="stylesheet" href="../navbar/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="icon" type="image/png" href="../logo.png">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div class="container">
+        <main>
+            <section class="list-section">
+                <h2>Gastos Cadastrados</h2>
+                <div class="table-container">
+                    <table id="tabela-gastos">
+                        <thead>
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th>Data da Compra</th>
+                                <th>Obra</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Material de construção</td>
+                                <td>R$ 500,00</td>
+                                <td>01/10/2024</td>
+                                <td>João Silva</td>
+                                <td>Casa A</td>
+                                <td class="acoes">
+                                    <button class="btn-atualizar" onclick="editarGasto()">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-deletar" onclick="deletarGasto()">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="edit-section" style="display:none;">
+                <h2>Editar Gasto</h2>
+                <form id="edit-form">
+                    <input type="hidden" id="edit-id">
+                    <label for="edit-descricao">Descrição:</label>
+                    <input type="text" id="edit-descricao" required>
+                    <label for="edit-valor">Valor:</label>
+                    <input type="number" step="0.01" id="edit-valor" required>
+                    <label for="edit-data_compra">Data da Compra:</label>
+                    <input type="date" id="edit-data_compra" required>
+                    <label for="edit-usuario">Usuário:</label>
+                    <input type="text" id="edit-usuario" required>
+                    <label for="edit-obra">Obra:</label>
+                    <input type="text" id="edit-obra" required>
+                    <button type="submit">Salvar Alterações</button>
+                    <button type="button" onclick="cancelarEdicao()">Cancelar</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="meusgastos.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../navbar/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+
+                    const hamburger = document.querySelector('.hamburger');
+                    const navLinks = document.querySelector('.nav-links');
+                    if (hamburger && navLinks) {
+                        hamburger.addEventListener('click', () => {
+                            navLinks.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar a navbar:', error));
+        });
+    </script>
+</body>
+</html>

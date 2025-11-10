@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Obras</title>
+    <link rel="stylesheet" href="minhasobras.css">
+    <link rel="stylesheet" href="../navbar/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="icon" type="image/png" href="../logo.png">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div class="container">
+        <main>
+            <section class="list-section">
+                <h2>Minhas Obras</h2>
+                <div class="table-container">
+                    <table id="tabela-obras">
+                        <thead>
+                            <tr>
+                                <th>Nome da Obra</th>
+                                <th>Localização</th>
+                                <th>Data de Início</th>
+                                <th>Data de Fim</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Exemplo de Obra</td>
+                                <td>Localização Exemplo</td>
+                                <td>01/01/2024</td>
+                                <td>01/12/2024</td>
+                                <td class="acoes">
+                                    <button class="btn-atualizar" onclick="editarObra()">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn-deletar" onclick="deletarObra()">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            <section id="edit-section" style="display:none;">
+                <h2>Editar Obra</h2>
+                <form id="edit-form">
+                    <input type="hidden" id="edit-id" />
+                    <label for="edit-nome">Nome da Obra:</label>
+                    <input type="text" id="edit-nome" class="input-field" required />
+                    <label for="edit-localizacao">Localização:</label>
+                    <input type="text" id="edit-localizacao" class="input-field" required />
+                    <label for="edit-data_inicio">Data de Início:</label>
+                    <input type="date" id="edit-data_inicio" class="input-field" required />
+                    <label for="edit-data_fim">Data de Fim:</label>
+                    <input type="date" id="edit-data_fim" class="input-field" />
+                    <button type="submit" class="btn-salvar">Salvar</button>
+                    <button type="button" onclick="cancelarEdicao()" class="btn-cancelar">Cancelar</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <script src="minhasobras.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../navbar/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+
+                    const hamburger = document.querySelector('.hamburger');
+                    const navLinks = document.querySelector('.nav-links');
+                    if (hamburger && navLinks) {
+                        hamburger.addEventListener('click', () => {
+                            navLinks.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar a navbar:', error));
+        });
+    </script>
+</body>
+</html>

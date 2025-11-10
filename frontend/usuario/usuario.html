@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="usuario.css">
+    <link rel="stylesheet" href="../navbar/navbar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="icon" type="image/png" href="../logo.png">
+    <style>
+        .toggle-password {
+            cursor: pointer;
+            position: absolute;
+            margin-left: -30px;
+            margin-top: 5px;
+        }
+        .profile-field {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <div class="profile-container">
+        <div class="profile-header">
+            <h1>Informações do Usuário:</h1>
+        </div>
+
+        <form id="update-form">
+            <input type="hidden" id="id_usuario" name="id_usuario"> 
+            <div class="profile-info">
+                <div class="profile-field">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required disabled>
+                </div>
+        
+                <div class="profile-field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required disabled>
+                </div>
+        
+                <div class="profile-field">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" class="fixed-size-password" placeholder="******" disabled maxlength="20">
+                    <span id="toggle-password" class="material-icons toggle-password" style="cursor: pointer;">visibility</span>                    
+                </div>                             
+            </div>
+        </form>
+    </div>
+
+    <script src="usuario.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../navbar/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+
+                    const hamburger = document.querySelector('.hamburger');
+                    const navLinks = document.querySelector('.nav-links');
+                    if (hamburger && navLinks) {
+                        hamburger.addEventListener('click', () => {
+                            navLinks.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar a navbar:', error));
+        });
+    </script>
+</body>
+</html>

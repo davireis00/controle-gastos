@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar Responsiva com Ícones</title>
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../logo.png" alt="Logo" class="logo-img">
+    </div>
+    <ul class="nav-links">
+      <li><a href="../dashboard/dashboard.html"><span class="material-icons">dashboard</span>Dashboard</a></li>
+      <li><a href="../minhasobras/minhasobras.html"><span class="material-icons">business</span>Minhas Obras</a></li>
+      <li><a href="../novaobra/novaobra.html"><span class="material-icons">add_box</span>Nova Obra</a></li>
+      <li><a href="../meusgastos/meusgastos.html"><span class="material-icons">attach_money</span>Meus Gastos</a></li>
+      <li><a href="../novogasto/novogasto.html"><span class="material-icons">add_circle</span>Novo Gasto</a></li>
+      <li><a href="../usuario/usuario.html"><span class="material-icons">account_circle</span>Perfil</a></li>
+      <li><a href="../login/login.html"><span class="material-icons">logout</span>Sair da Conta</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

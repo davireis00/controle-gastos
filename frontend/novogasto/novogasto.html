@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Despesas</title>
+    <link rel="stylesheet" href="novogasto.css">
+    <link rel="stylesheet" href="../navbar/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../logo.png">
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <div class="container">
+        <header>
+            <h1>Cadastro de Despesas</h1>
+        </header>
+        <main>
+            <section class="form-section">
+                <form onsubmit="adicionarDespesa(event)">
+                    <div class="form-group">
+                        <label for="descricao">Material/Produto:</label>
+                        <input type="text" id="descricao" name="descricao" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor:</label>
+                        <input type="number" id="valor" name="valor" required step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="data">Data da Compra:</label>
+                        <input type="date" id="data" name="data" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_obra">Obra:</label>
+                        <select id="id_obra" name="id_obra" required>
+                            <option value="">Selecione uma obra</option> 
+                        </select>
+                    </div>                                                         
+                    <button type="submit">Cadastrar Despesa</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="novogasto.js" defer></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../navbar/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+
+                    const hamburger = document.querySelector('.hamburger');
+                    const navLinks = document.querySelector('.nav-links');
+                    if (hamburger && navLinks) {
+                        hamburger.addEventListener('click', () => {
+                            navLinks.classList.toggle('active');
+                        });
+                    }
+                })
+                .catch(error => console.error('Erro ao carregar a navbar:', error));
+        });
+    </script>
+</body>
+</html>

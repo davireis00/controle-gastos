@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Obra</title>
+    <link rel="stylesheet" href="detalhes.css">
+    <link rel="stylesheet" href="../navbar/navbar.css">
+</head>
+<body>
+    <div id="navbar-container"></div>
+    <main class="container">
+        <section id="detalhes-obra">
+            <h1>Detalhes da Obra</h1>
+            <p><strong>Nome da Obra:</strong> <span id="nome-obra"></span></p>
+            <p><strong>Endereço:</strong> <span id="endereco-obra"></span></p>
+            <p><strong>Data de Início:</strong> <span id="data-inicio"></span></p>
+            <p><strong>Data de Término:</strong> <span id="data-termino"></span></p>
+            <p><strong>Total Gasto:</strong> <span id="total-gasto"></span></p>
+            <p><strong>Status da Obra:</strong> <span id="status-obra"></span></p>
+        </section>
+
+        <section id="gastos-obra">
+            <h2>Gastos da Obra</h2>
+            <table id="tabela-gastos">
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="graficos-obra">
+            <h2>Gráfico de Gastos</h2>
+            <canvas id="grafico-gastos"></canvas>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="detalhes.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('../navbar/navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                })
+                .catch(error => console.error('Erro ao carregar a navbar:', error));
+        });
+    </script>
+</body>
+</html>
